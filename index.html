@@ -1,0 +1,68 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <!-- Place favicon.ico in the root directory -->
+
+        <link rel="stylesheet" href="assets/styles/normalize.css">
+        <link rel="stylesheet" href="assets/styles/main.css">
+
+    </head>
+    <body>
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <!-- Add your site or application content here -->
+        <div id="app" ng-app="chatApp">
+
+            <h3 id="status"></h3>
+
+            <div id="userlist" ng-controller="userList" class="scroll">
+                <h3>Users</h3>
+                <ul>
+                    <li ng-repeat="user in users">{{user}}</li>
+                </ul>
+            </div>
+
+            <!-- Chat log -->
+            <div id="chatlog" ng-controller="chatLog">
+                <h3>Chat Messages</h3> 
+                <ul>
+                    <li ng-repeat="message in messages"><span>{{message.user}}</span>{{message.message}}</li>
+                </ul>
+            </div>
+
+            <!-- message input -->
+            <div id="chatinput" ng-controller="chatInput">
+                <form id="chat-form">
+                    <textarea id="chat-message"></textarea>
+                    <button type="submit" ng-click="send($event)">Send</button>
+                </form>
+            </div>
+
+            <!-- User activity log (enter / leave chat room) -->
+            <div id="activityLog" ng-controller="activityLog" class="scroll">
+                <h3>Actiity Log</h3>
+                <ul>
+                    <li ng-repeat="log in logs">{{log}}</li>
+                </ul>
+            </div>
+
+        </div>
+        <h1>Chat Room</h1>
+        <p>Node / Express / Angular / Socket.io</p>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+
+        <script src="/socket.io/socket.io.js"></script>
+        <script type="text/javascript" src="assets/scripts/app.js"></script>
+    </body>
+</html>
